@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 10px;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cta {
+            display: inline-block;
+            padding: 10px 30px;
+            color: red;
+            background-color: transparent;
+            border: 2px solid red;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: .1rem;
+            margin-top: 30px;
+            transition: .3s ease;
+            transition-property: background-color, color;
+        }
+
+        .section-title {
+            font-size: 4rem;
+            font-weight: 300;
+            color: black;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: .2rem;
+            text-align: center;
+        }
+
+        .section-title span {
+            color: red;
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .brand h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            color: white;
+        }
+
+        .brand h1 span {
+            color: red;
+        }
+
+        /*header*/
+        #header2 {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: auto;
+        }
+
+        .header {
+            min-height: 8vh;
+            background-color: rgba(31, 30, 30, 0.24);
+            transition: .3s ease background-color;
+        }
+
+        .nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+            max-height: 1300px;
+            padding: 0 10px;
+        }
+
+        .nav-list ul {
+            list-style: none;
+            position: absolute;
+            background-color: rgb(31, 30, 30);
+            width: 100vw;
+            height: 100vh;
+            left: 100%;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            overflow-x: hidden;
+            transition: .5s ease left;
+        }
+
+        .nav-list ul.active {
+            left: 20%;
+        }
+
+        .nav-list ul a {
+            font-size: 2.5rem;
+            font-weight: 500;
+            letter-spacing: .2rem;
+            text-decoration: none;
+            color: white;
+            text-transform: uppercase;
+            padding: 20px;
+            display: block;
+        }
+
+        .nav-list ul a::after {
+            content: attr(data-after);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            color: rgba(240, 248, 255, 0.021);
+            font-size: 13rem;
+            letter-spacing: 50px;
+            z-index: -1;
+            transition: .3s ease letter-spacing;
+        }
+
+        .nav-list ul li:hover a::after {
+            transform: translate(-50%, -50%) scale(1);
+            letter-spacing: initial;
+        }
+
+        .nav-list ul li:hover a {
+            color: red;
+        }
+
+        .hamburger {
+            height: 60px;
+            width: 60px;
+            display: inline-block;
+            border: 3px solid white;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            cursor: pointer;
+            transform: scale(.8);
+            margin-right: 20px;
+        }
+
+        .hamburger::after {
+            position: absolute;
+            content: '';
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            border: 3px solid white;
+            animation: hamburger_puls 1s ease infinite;
+        }
+
+        .hamburger .bar {
+            height: 2px;
+            width: 30px;
+            position: relative;
+            background-color: white;
+            z-index: -1;
+        }
+
+        .hamburger .bar::after,
+        .hamburger .bar::before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            background-color: white;
+            transition: .3s ease;
+            transition-property: top, bottom;
+        }
+
+        .hamburger .bar::after {
+            top: 8px;
+        }
+
+        .hamburger .bar::before {
+            bottom: 8px;
+        }
+
+        .hamburger.active .bar::before {
+            bottom: 0px;
+        }
+
+        .hamburger.active .bar::after {
+            top: 0px;
+        }
+
+
+        /*hero1 section*/
+        #hero2 {
+            background-image: url(https://th.bing.com/th/id/OIP.3YD6BYo7QXfw5Y5d_79tGwHaFj?w=247&h=185&c=7&r=0&o=5&pid=1.7);
+            background-size: cover;
+            background-position: top center;
+            position: relative;
+            z-index: 1;
+        }
+
+
+        #hero2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-color: black;
+            opacity: .7;
+            z-index: -1;
+        }
+
+        #hero2 .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 50px;
+            justify-content: flex-start;
+        }
+
+        #hero2 h1 {
+            display: block;
+            width: fit-content;
+            font-size: 4rem;
+            position: relative;
+            color: transparent;
+            animation: text_reveal .5s ease forwards;
+            animation-delay: 1.5s;
+        }
+
+        #hero2 h1:nth-child(1) {
+            animation-delay: 1s;
+        }
+
+        #hero2 h1:nth-child(2) {
+            animation-delay: 2s;
+        }
+
+        #hero2 h1:nth-child(3) {
+            animation: text_reveal_name .5s ease forwards;
+            animation-delay: 3s;
+        }
+
+        #hero2 h1 span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background-color: red;
+            animation: text_reveal_box 1s ease;
+            animation-delay: .3s;
+        }
+
+        #hero2 h1:nth-child(1) span {
+            animation-delay: .5s;
+        }
+
+        #hero2 h1:nth-child(2) span {
+            animation-delay: 1.5s;
+        }
+
+        #hero2 h1:nth-child(3) span {
+            animation-delay: 2.5s;
+        }
+
+        #hero2 .cta:hover {
+            color: white;
+            background-color: red;
+
+        }
+        #footer {
+            background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+        }
+
+        #footer .footer {
+            min-height: 200px;
+            flex-direction: column;
+            padding: 50px;
+            padding-bottom: 10px;
+        }
+
+        #footer h2 {
+            color: white;
+            font-weight: 500;
+            font-size: 1.8rem;
+            letter-spacing: .1rem;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        #footer .social-icon {
+            display: flex;
+            margin-bottom: 30px;
+        }
+
+        #footer .social-item {
+            height: 50px;
+            width: 50px;
+            margin: 0 5px;
+        }
+
+        #footer .social-icon img {
+            filter: grayscale(1);
+            transition: .3s ease filter;
+        }
+
+        #footer .social-item:hover img {
+            filter: grayscale(0);
+        }
+
+        #footer p {
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        /*keyframes*/
+        @keyframes hamburger_puls {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.5);
+            }
+        }
+
+        @keyframes text_reveal_box {
+            50% {
+                width: 100%;
+                left: 0;
+            }
+
+            100% {
+                width: 0;
+                left: 100%;
+            }
+        }
+
+        @keyframes text_reveal {
+            100% {
+                color: white;
+            }
+        }
+
+        @keyframes text_reveal_name {
+            100% {
+                color: red;
+                font-weight: 500;
+            }
+        }@media only screen and (min-width:768px) {
+            .cta {
+                font-size: 2.5rem;
+                padding: 20px 60px;
+            }
+
+            h1.section-title {
+                font-size: 6rem;
+            }
+
+            /*hero section*/
+            #hero h1 {
+                font-size: 7rem;
+            }
+        }
+        @media only screen and (min-width:1200px) {
+            .hamburger {
+                display: none;
+            }
+
+            .nav-list ul {
+                position: initial;
+                display: block;
+                height: auto;
+                width: fit-content;
+                background-color: transparent;
+            }
+
+            .nav-list ul li {
+                display: inline-block;
+            }
+
+            .nav-list ul li a {
+                font-size: 1.8rem;
+            }
+
+            .nav-list ul a::after {
+                display: none;
+            }
+        }
+
+        @media screen and (min-width:1024px) {
+            .mvv-contianer .mvv-block:nth-child(odd) .image {
+                order: 1;
+            }
+
+            .mvv-contianer .mvv-block:nth-child(even) .image {
+                order: 2;
+            }
+
+            .mvv-contianer .mvv-block:nth-child(odd) .content {
+                order: 2;
+                padding-left: 30px;
+            }
+
+            .mvv-contianer .mvv-block:nth-child(even) .content {
+                order: 1;
+                padding-right: 30px;
+            }
+        }
+        /*content*/
+        #content .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(aboutbg.jpg);
+            background-position: center;
+            background-size: cover;
+            width: 100%;
+            height: 100vh;
+        }
+
+        #content .banner {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #content .logo {
+            margin: auto 3rem;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        #content span {
+            color: red;
+        }
+
+        #content nav ul li {
+            display: inline-block;
+            list-style: none;
+            margin: 2rem;
+            position: relative;
+        }
+
+        #content nav ul li a {
+            text-decoration: none;
+            color: white;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 1.5rem;
+        }
+
+        #content nav ul li a::after {
+            content: '';
+            height: 3px;
+            width: 0%;
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            background-color: white;
+            transition: 0.6s ease-out;
+        }
+
+        #content nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .mvv-contianer {
+            max-width: 90%;
+            margin: 50px auto 0;
+        }
+
+        .mvv-contianer .mvv-block {
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .mvv-contianer .mvv-block .image {
+            flex: 0 0 auto;
+            width: 400px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px 5px rgba(0, 0, 0, .3);
+            line-height: 0;
+        }
+
+        .mvv-contianer .mvv-block .image img {
+            width: 100%;
+            transition: .3s;
+            transform: scale(1);
+        }
+
+        .mvv-contianer .mvv-block .image:hover img {
+            transform: scale(1.05);
+        }
+
+        .mvv-contianer .mvv-block .content {
+            flex: 0 0 auto;
+            width: calc(100% - 400px);
+            box-sizing: border-box;
+            align-self: center;
+        }
+
+        .mvv-contianer .mvv-block .content h4 {
+            font-weight: 700;
+            font-size: 40px;
+            color: blue;
+            margin-bottom: 10px;
+        }
+
+        .mvv-contianer .mvv-block .content p {
+            font-size: 15px;
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <section id="header2">
+        <div class="header container">
+            <div class="nav-bar">
+                <div class="brand">
+                    <a href="home.html">
+                        <h1><span>A</span>BC <span>L</span>earning <span>C</span>enter</h1>
+                    </a>
+                </div>
+                <div class="nav-list">
+                    <div class="hamburger">
+                        <div class="bar"></div>
+                    </div>
+                    <ul>
+                        <li><a href="home.html" data-after="About">Home</a></li>
+                        <li><a href="abc.html" data-after="Cources">Courses</a></li>
+                        <li><a href="contact.html" data-after="Contact">Contact</a></li>
+                        <li><a href="privacy.html" data-after="Privacy">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+     <!--hero1-->
+     <section id="hero2">
+        <div class="hero container">
+            <div>
+                <h1>About,<Span></Span></h1>
+                <h1>ABC<Span></Span></h1>
+                <h1>Learning<Span></Span></h1>
+                <a href="#" type="button" class="cta">Portfolio</a>
+            </div>
+        </div>
+    </section>
+    <!--About company-->
+    <section id="content">
+        <div class="mvv-contianer">
+            <div class="mvv-block">
+                <div class="image">
+                    <img src="miss.jpg" alt="our mission">
+                </div>
+                <div class="content">
+                    <h4>Our Mission</h4>
+                    <p>ABC Learning Center is committed to providing comprehensive, quality learning opportunities that will
+                        help our students grow and develop their skills to their fullest potential.
+                    </p>
+                </div>
+            </div>
+            <div class="mvv-block">
+                <div class="image">
+                    <img src="viss.jpg" alt="our vision">
+                </div>
+                <div class="content">
+                    <h4>Our Vision</h4>
+                    <p>Our vision is to be the leading provider of IT training and educational services in the region,
+                        offering our students the best educational experience possible.</p>
+                </div>
+            </div>
+            <div class="mvv-block">
+                <div class="image">
+                    <img src="arch.jpg" alt="our Archivement">
+                </div>
+                <div class="content">
+                    <h4>Our Archivement</h4>
+                    <p>ABC Learning Center is proud to have achieved the following awards and accolades: <br>
+                        • Awarded Best IT Training Institute in the Region for five consecutive years <br>
+                        • Rated Top 5 IT Training Institutes in the Country by independent survey <br>
+                        • Awarded Best Online Learning Platform by the National Education Council</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--footer-->
+    <section id="footer">
+        <div class="footer container">
+            <div class="brand">
+                <h1><span>A</span>BC<span>L</span>earning<span>C</span>enter</h1>
+            </div>
+            <h2>Your website</h2>
+            <div class="social-icon">
+                <div class="social-item">
+                    <a href="#"><img src="https://img.icons8.com/fluency/48/null/facebook-new.png" /></a>
+                </div>
+                <div class="social-item">
+                    <a href="#"><img src="https://img.icons8.com/cute-clipart/64/null/instagram-new.png" /></a>
+                </div>
+                <div class="social-item">
+                    <a href="#"><img src="https://img.icons8.com/color/48/null/twitter--v1.png" /></a>
+                </div>
+            </div>
+            <p>Copyright &copy; 2023 Abc learning center. All rights reserved</p>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
